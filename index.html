@@ -3,72 +3,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Baby Gender Reveal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>It's a Girl!</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background-color: #ffe6f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-    #reveal-container {
+      background-color: #fff5f8;
+      font-family: 'Arial', sans-serif;
       text-align: center;
+      padding: 30px 15px;
+      color: #cc2e6b;
     }
-    #reveal-button {
-      padding: 15px 30px;
-      font-size: 1.5rem;
-      background-color: #ff99cc;
+    h1 {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+    #reveal {
+      display: none;
+      margin-top: 30px;
+    }
+    #reveal img {
+      width: 80%;
+      max-width: 400px;
+      border-radius: 20px;
+      margin-top: 15px;
+    }
+    button {
+      background-color: #ff77aa;
       color: white;
       border: none;
-      border-radius: 15px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    #result {
       margin-top: 30px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
     }
-    .fade-in {
-      opacity: 1;
-    }
-    .floating {
-      animation: float 2s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    button:hover {
+      background-color: #ff99bb;
     }
   </style>
 </head>
 <body>
-  <div id="reveal-container">
-    <button id="reveal-button">Let's see!</button>
-    <div id="result">
-      <img src="https://cdn.pixabay.com/photo/2017/06/09/00/45/baby-2387625_1280.png" alt="It's a girl!" width="300" class="floating" />
-      <h1 style="color: #ff66b2;">It's a Girl!</h1>
-    </div>
-    <audio id="reveal-sound" preload="auto">
-      <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4e7e4dbf87.mp3?filename=children-cheering-144217.mp3" type="audio/mpeg">
-    </audio>
+  <h1>Tap the button to see the surprise!</h1>
+  <button onclick="revealGender()">Let's see! 🎀</button>
+
+  <div id="reveal">
+    <h1>It's a Girl! 💕</h1>
+    <img src="its_a_girl_image.jpg" alt="It's a Girl Image">
   </div>
 
-  <script>
-    const button = document.getElementById('reveal-button');
-    const result = document.getElementById('result');
-    const sound = document.getElementById('reveal-sound');
+  <audio id="sound" src="https://cdn.pixabay.com/audio/2021/08/04/audio_c188edfa72.mp3"></audio>
 
-    button.addEventListener('click', () => {
-      sound.play();
-      result.classList.add('fade-in');
-      button.style.display = 'none';
-    });
+  <script>
+    function revealGender() {
+      document.getElementById('sound').play();
+      document.getElementById('reveal').style.display = 'block';
+    }
   </script>
 </body>
 </html>
